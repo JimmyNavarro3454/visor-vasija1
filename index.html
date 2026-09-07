@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,112 +10,299 @@
   </script>
 
   <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: #ffffff;
+      background: #f7f6f2;
+      color: #111111;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
-    h2 {
-      margin: 15px;
-    }
-
-    .visor {
-      position: relative;
+    .pagina {
       width: 100%;
+      max-width: 650px;
+      margin: auto;
+      padding: 42px 28px 35px;
+    }
+
+
+    /* =========================
+       ENCABEZADO
+    ========================== */
+
+    .titulo {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 52px;
+      line-height: 0.88;
+      font-weight: 400;
+      margin: 0 0 18px;
+      letter-spacing: -1px;
+    }
+
+    .subtitulo {
+      font-size: 14px;
+      letter-spacing: 7px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================
+       BOTÓN AR
+    ========================== */
+
+    .boton-ar {
+      display: inline-block;
+      background: #111111;
+      color: white;
+
+      border: none;
+      border-radius: 30px;
+
+      padding: 13px 24px;
+
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      margin-bottom: 32px;
+
+      transition: 0.25s;
+    }
+
+    .boton-ar:hover {
+      background: #333333;
+    }
+
+
+    /* =========================
+       VISOR
+    ========================== */
+
+    .contenedor-modelo {
+      width: 100%;
+      border: 1.5px solid #c9a66b;
+      border-radius: 38px;
+      overflow: hidden;
+      background: #efefec;
     }
 
     model-viewer {
+      display: block;
       width: 100%;
-      height: 80vh;
-      background: #f2f2f2;
+      height: 520px;
+      background: #efefec;
     }
 
-    /* CUADRO DE INFORMACIÓN */
-    .info-card {
-      position: absolute;
-      left: 15px;
-      bottom: 15px;
 
-      max-width: 260px;
-      padding: 12px 14px;
+    /* =========================
+       INFORMACIÓN
+    ========================== */
 
-      background: rgba(255,255,255,0.92);
-      border-radius: 10px;
+    .informacion {
+      text-align: center;
+      padding-top: 42px;
+    }
 
-      text-align: left;
+    .informacion h2 {
+      font-size: 25px;
+      margin: 0 0 20px;
+      font-weight: 700;
+    }
+
+    .nombre-pieza {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .datos {
+      max-width: 420px;
+      margin: auto;
+
       font-size: 13px;
-      line-height: 1.4;
-
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      line-height: 1.8;
+      color: #444444;
     }
 
-    .info-card h3 {
-      margin: 0 0 5px 0;
-      font-size: 16px;
+    .datos strong {
+      color: #111111;
+      font-weight: 600;
     }
 
-    .info-card p {
-      margin: 3px 0;
+
+    /* =========================
+       CRÉDITOS
+    ========================== */
+
+    .creditos {
+      margin-top: 35px;
+      padding-top: 20px;
+
+      border-top: 1px solid #d8d5cf;
+
+      font-size: 10px;
+      letter-spacing: 1px;
+      line-height: 1.8;
+
+      text-transform: uppercase;
+      color: #777777;
+      text-align: center;
     }
 
-    .ar-button {
-      background: white;
-      border: 1px solid #ccc;
-      padding: 14px 22px;
-      border-radius: 8px;
 
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+    /* =========================
+       CELULAR
+    ========================== */
 
-      font-size: 16px;
-      cursor: pointer;
+    @media (max-width: 600px) {
+
+      .pagina {
+        padding: 35px 22px 30px;
+      }
+
+      .titulo {
+        font-size: 43px;
+      }
+
+      .subtitulo {
+        font-size: 11px;
+        letter-spacing: 5px;
+      }
+
+      model-viewer {
+        height: 440px;
+      }
+
+      .contenedor-modelo {
+        border-radius: 32px;
+      }
+
     }
 
   </style>
 </head>
 
+
 <body>
 
-<h2>Visualizador 3D</h2>
+<div class="pagina">
 
-<div class="visor">
 
-  <model-viewer
+  <!-- =========================
+       TÍTULO
+  ========================== -->
+
+  <h1 class="titulo">
+    COLECCION<br>
+    DIGITAL
+  </h1>
+
+  <div class="subtitulo">
+    Patrimonio 3D
+  </div>
+
+
+  <!-- =========================
+       BOTÓN REALIDAD AUMENTADA
+  ========================== -->
+
+  <button
+    class="boton-ar"
+    id="botonAR">
+    VER REALIDAD AUMENTADA
+  </button>
+
+
+  <!-- =========================
+       MODELO 3D
+  ========================== -->
+
+  <div class="contenedor-modelo">
+
+    <model-viewer
+      id="modelo3D"
+
       src="modelo.glb"
+
       camera-controls
       auto-rotate
+
       ar
       ar-modes="webxr scene-viewer quick-look"
-      shadow-intensity="1">
 
-      <button slot="ar-button" class="ar-button">
-        VER REALIDAD AUMENTADA
-      </button>
+      shadow-intensity="1"
+      exposure="1">
 
-  </model-viewer>
-
-
-  <div class="info-card">
-
-    <h3>Vasija Cerámica</h3>
-
-    <p><strong>Objeto:</strong>Replica de Vasija</p>
-
-    <p><strong>By:</strong> Francisco Lopez </p>
-    
-    <p><strong>Técnica:</strong> Escaneo 3D / Fotogrametría</p>
-
-    <p><strong>Año:</strong> 2026</p>
-
-    <p><strong>Registro 3D:</strong> Jimmy Navarro y Lizmelanie Vásquez</p>
+    </model-viewer>
 
   </div>
 
+
+  <!-- =========================
+       INFORMACIÓN DE LA PIEZA
+       EDITAR AQUÍ
+  ========================== -->
+
+  <section class="informacion">
+
+    <h2>Descubre la pieza</h2>
+
+    <div class="nombre-pieza">
+      Replica de Vasija
+    </div>
+
+    <div class="datos">
+
+      <strong>Objeto:</strong>
+      Vasija Cerámica
+      <br>
+
+      <strong>Autor:</strong>
+      Francisco López
+      
+
+    </div>
+
+
+    <!-- =========================
+         CRÉDITOS
+         EDITAR AQUÍ
+    ========================== -->
+
+    <div class="creditos">
+
+      Registro y modelo 3D<br>
+
+      Jimmy Navarro · Lizmelanie Vásquez<br>
+
+      Guatemala · 2026
+
+    </div>
+
+  </section>
+
 </div>
+
+
+<script>
+
+  const modelo = document.getElementById("modelo3D");
+  const boton = document.getElementById("botonAR");
+
+  boton.addEventListener("click", () => {
+    modelo.activateAR();
+  });
+
+</script>
+
 
 </body>
 </html>
