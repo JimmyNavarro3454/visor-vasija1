@@ -13,6 +13,16 @@
       margin: 0;
       font-family: Arial, sans-serif;
       text-align: center;
+      background: #ffffff;
+    }
+
+    h2 {
+      margin: 15px;
+    }
+
+    .visor {
+      position: relative;
+      width: 100%;
     }
 
     model-viewer {
@@ -21,9 +31,49 @@
       background: #f2f2f2;
     }
 
-    h2 {
-      margin: 15px;
+    /* CUADRO DE INFORMACIÓN */
+    .info-card {
+      position: absolute;
+      left: 15px;
+      bottom: 15px;
+
+      max-width: 260px;
+      padding: 12px 14px;
+
+      background: rgba(255,255,255,0.92);
+      border-radius: 10px;
+
+      text-align: left;
+      font-size: 13px;
+      line-height: 1.4;
+
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
+
+    .info-card h3 {
+      margin: 0 0 5px 0;
+      font-size: 16px;
+    }
+
+    .info-card p {
+      margin: 3px 0;
+    }
+
+    .ar-button {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 14px 22px;
+      border-radius: 8px;
+
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      font-size: 16px;
+      cursor: pointer;
+    }
+
   </style>
 </head>
 
@@ -31,29 +81,40 @@
 
 <h2>Visualizador 3D</h2>
 
-<model-viewer
-    src="modelo.glb"
-    camera-controls
-    auto-rotate
-    ar
-    ar-modes="webxr scene-viewer quick-look"
-    shadow-intensity="1">
+<div class="visor">
 
-    <button slot="ar-button"
-      style="
-      background:white;
-      border:1px solid #ccc;
-      padding:14px 22px;
-      border-radius:8px;
-      position:absolute;
-      bottom:20px;
-      left:50%;
-      transform:translateX(-50%);
-      font-size:16px;">
-      Ver en realidad aumentada
-    </button>
+  <model-viewer
+      src="modelo.glb"
+      camera-controls
+      auto-rotate
+      ar
+      ar-modes="webxr scene-viewer quick-look"
+      shadow-intensity="1">
 
-</model-viewer>
+      <button slot="ar-button" class="ar-button">
+        VER REALIDAD AUMENTADA
+      </button>
+
+  </model-viewer>
+
+
+  <div class="info-card">
+
+    <h3>Vasija Cerámica</h3>
+
+    <p><strong>Objeto:</strong>Replica de Vasija</p>
+
+    <p><strong>By:</strong> Francisco Lopez </p>
+    
+    <p><strong>Técnica:</strong> Escaneo 3D / Fotogrametría</p>
+
+    <p><strong>Año:</strong> 2026</p>
+
+    <p><strong>Registro 3D:</strong> Jimmy Navarro y Lizmelanie Vásquez</p>
+
+  </div>
+
+</div>
 
 </body>
 </html>
