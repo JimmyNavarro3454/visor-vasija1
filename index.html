@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <meta http-equiv="Cache-Control"
         content="no-cache, no-store, must-revalidate">
 
@@ -13,10 +13,11 @@
 
   <meta http-equiv="Expires"
         content="0">
-  
+
   <script type="module"
     src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
   </script>
+
 
   <style>
 
@@ -33,9 +34,9 @@
 
     .pagina {
       width: 100%;
-      max-width: 650px;
+      max-width: 750px;
       margin: auto;
-      padding: 42px 28px 35px;
+      padding: 42px 28px 45px;
     }
 
 
@@ -56,8 +57,88 @@
       font-size: 14px;
       letter-spacing: 7px;
       line-height: 1.7;
-      margin-bottom: 24px;
+      margin-bottom: 10px;
       text-transform: uppercase;
+    }
+
+    .introduccion {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 17px;
+      line-height: 1.5;
+      color: #555555;
+      max-width: 480px;
+      margin-bottom: 45px;
+    }
+
+
+    /* =========================
+       CATÁLOGO
+    ========================== */
+
+    .catalogo {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+
+    /* =========================
+       TARJETA
+    ========================== */
+
+    .pieza {
+      width: 100%;
+    }
+
+    .contenedor-modelo {
+      width: 100%;
+      border: 1.5px solid #c9a66b;
+      border-radius: 32px;
+      overflow: hidden;
+      background: #efefec;
+    }
+
+    model-viewer {
+      display: block;
+      width: 100%;
+      height: 300px;
+      background: #efefec;
+    }
+
+
+    /* =========================
+       DATOS DE CADA PIEZA
+    ========================== */
+
+    .info-pieza {
+      padding: 20px 5px 10px;
+    }
+
+    .numero {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #999999;
+      margin-bottom: 8px;
+    }
+
+    .nombre-pieza {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 23px;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .datos {
+      font-size: 12px;
+      line-height: 1.7;
+      color: #555555;
+      margin-bottom: 17px;
+    }
+
+    .datos strong {
+      color: #111111;
+      font-weight: 600;
     }
 
 
@@ -73,15 +154,13 @@
       border: none;
       border-radius: 30px;
 
-      padding: 13px 24px;
+      padding: 12px 19px;
 
-      font-size: 12px;
-      letter-spacing: 2px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
 
       cursor: pointer;
-
-      margin-bottom: 32px;
 
       transition: 0.25s;
     }
@@ -92,68 +171,12 @@
 
 
     /* =========================
-       VISOR
-    ========================== */
-
-    .contenedor-modelo {
-      width: 100%;
-      border: 1.5px solid #c9a66b;
-      border-radius: 38px;
-      overflow: hidden;
-      background: #efefec;
-    }
-
-    model-viewer {
-      display: block;
-      width: 100%;
-      height: 380px;
-      background: #efefec;
-    }
-
-
-    /* =========================
-       INFORMACIÓN
-    ========================== */
-
-    .informacion {
-      text-align: center;
-      padding-top: 42px;
-    }
-
-    .informacion h2 {
-      font-size: 25px;
-      margin: 0 0 20px;
-      font-weight: 700;
-    }
-
-    .nombre-pieza {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 22px;
-      margin-bottom: 15px;
-    }
-
-    .datos {
-      max-width: 420px;
-      margin: auto;
-
-      font-size: 13px;
-      line-height: 1.8;
-      color: #444444;
-    }
-
-    .datos strong {
-      color: #111111;
-      font-weight: 600;
-    }
-
-
-    /* =========================
        CRÉDITOS
     ========================== */
 
     .creditos {
-      margin-top: 35px;
-      padding-top: 20px;
+      margin-top: 55px;
+      padding-top: 22px;
 
       border-top: 1px solid #d8d5cf;
 
@@ -174,7 +197,7 @@
     @media (max-width: 600px) {
 
       .pagina {
-        padding: 35px 22px 30px;
+        padding: 35px 22px 35px;
       }
 
       .titulo {
@@ -186,12 +209,26 @@
         letter-spacing: 5px;
       }
 
+      .introduccion {
+        font-size: 15px;
+        margin-bottom: 35px;
+      }
+
+      .catalogo {
+        grid-template-columns: 1fr;
+        gap: 42px;
+      }
+
       model-viewer {
         height: 320px;
       }
 
       .contenedor-modelo {
         border-radius: 32px;
+      }
+
+      .nombre-pieza {
+        font-size: 22px;
       }
 
     }
@@ -206,7 +243,7 @@
 
 
   <!-- =========================
-       TÍTULO
+       TÍTULO GENERAL
   ========================== -->
 
   <h1 class="titulo">
@@ -218,92 +255,182 @@
     Patrimonio 3D
   </div>
 
+  <div class="introduccion">
+    Explora la colección digital y visualiza cada pieza
+    de forma interactiva o en realidad aumentada.
+  </div>
 
-  <!-- =========================
-       BOTÓN REALIDAD AUMENTADA
-  ========================== -->
-
-  <button
-    class="boton-ar"
-    id="botonAR">
-    VER REALIDAD AUMENTADA
-  </button>
 
 
   <!-- =========================
-       MODELO 3D
+       CATÁLOGO
   ========================== -->
 
-  <div class="contenedor-modelo">
+  <div class="catalogo">
 
-    <model-viewer
-      id="modelo3D"
 
-      src="modelo.glb"
+    <!-- =========================
+         PIEZA 01
+    ========================== -->
 
-      camera-controls
-      auto-rotate
+    <article class="pieza">
 
-      ar
-      ar-modes="webxr scene-viewer quick-look"
+      <div class="contenedor-modelo">
 
-      shadow-intensity="1"
-      exposure="1">
+        <model-viewer
+          id="modelo01"
 
-    </model-viewer>
+          src="modelo.glb?v=1"
+
+          camera-controls
+          auto-rotate
+
+          ar
+          ar-modes="webxr scene-viewer quick-look"
+
+          shadow-intensity="1"
+          exposure="1">
+
+        </model-viewer>
+
+      </div>
+
+
+      <div class="info-pieza">
+
+        <div class="numero">
+          Pieza 01
+        </div>
+
+        <div class="nombre-pieza">
+          Réplica de Vasija
+        </div>
+
+        <div class="datos">
+
+          <strong>Objeto:</strong>
+          Vasija Cerámica
+          <br>
+
+          <strong>Autor:</strong>
+          Francisco López
+
+        </div>
+
+        <button
+          class="boton-ar"
+          data-modelo="modelo01">
+
+          VER REALIDAD AUMENTADA
+
+        </button>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- =========================
+         PIEZA 02
+    ========================== -->
+
+    <article class="pieza">
+
+      <div class="contenedor-modelo">
+
+        <model-viewer
+          id="modelo02"
+
+          src="modelo1.glb?v=1"
+
+          camera-controls
+          auto-rotate
+
+          ar
+          ar-modes="webxr scene-viewer quick-look"
+
+          shadow-intensity="1"
+          exposure="1">
+
+        </model-viewer>
+
+      </div>
+
+
+      <div class="info-pieza">
+
+        <div class="numero">
+          Pieza 02
+        </div>
+
+        <div class="nombre-pieza">
+          Segunda Pieza
+        </div>
+
+        <div class="datos">
+
+          <strong>Objeto:</strong>
+          Pieza Cerámica
+          <br>
+
+          <strong>Autor:</strong>
+          Nombre del autor
+
+        </div>
+
+        <button
+          class="boton-ar"
+          data-modelo="modelo02">
+
+          VER REALIDAD AUMENTADA
+
+        </button>
+
+      </div>
+
+    </article>
+
 
   </div>
 
 
+
   <!-- =========================
-       INFORMACIÓN DE LA PIEZA
-       EDITAR AQUÍ
+       CRÉDITOS GENERALES
   ========================== -->
 
-  <section class="informacion">
+  <div class="creditos">
 
-    <h2>DESCUBRE LA PIEZA</h2>
+    Registro y modelos 3D<br>
 
-    <div class="nombre-pieza">
-      Replica de Vasija
-    </div>
+    Jimmy Navarro · Lizmelanie Vásquez<br>
 
-    <div class="datos">
+    Guatemala · 2026
 
-      <strong>Objeto:</strong>
-      Vasija Cerámica
-      <br>
+  </div>
 
-      <strong>Autor:</strong>
-      Francisco López
-      
-    </div>
-    <!-- =========================
-         CRÉDITOS
-         EDITAR AQUÍ
-    ========================== -->
-    <div class="creditos">
-
-      Registro y modelo 3D<br>
-
-      Jimmy Navarro · Lizmelanie Vásquez<br>
-
-      Guatemala · 2026
-
-    </div>
-
-  </section>
 
 </div>
 
 
+
 <script>
 
-  const modelo = document.getElementById("modelo3D");
-  const boton = document.getElementById("botonAR");
+  const botonesAR = document.querySelectorAll(".boton-ar");
 
-  boton.addEventListener("click", () => {
-    modelo.activateAR();
+  botonesAR.forEach((boton) => {
+
+    boton.addEventListener("click", () => {
+
+      const idModelo = boton.getAttribute("data-modelo");
+
+      const modelo = document.getElementById(idModelo);
+
+      modelo.activateAR();
+
+    });
+
   });
 
 </script>
